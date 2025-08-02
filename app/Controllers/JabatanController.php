@@ -16,21 +16,49 @@ class JabatanController extends BaseController
     }
     public function index()
     {
-        return view('jabatan/index');
+        $data['jabatan'] = $this->modelJabatan->findAll();
+        return view('jabatan/index', $data);
     }
 
     public function show($id) {}
 
-    public function create() {}
+    public function create()
+    {
+        return view('jabatan/create');
+    }
 
     public function store()
     {
-        # code...
+        $data = [
+            'nama_jabatan' => $this->request->getPost('nama_jabatan'),
+            'deskripsi_jabatan' => $this->request->getPost('deskripsi_jabatan'),
+        ];
+
+        $this->modelJabatan->save($data);
+        return redirect('jabatan');
     }
 
-    public function edit($id) {}
+    public function edit($id)
+    {
+        $data['jabatan'] = $this->modelJabatan->find($id);
+        return view('jabatan/edit', $data);
+    }
 
-    public function update($id) {}
+    public function update($id)
+    {
+        $data = [
+            'id' => $id,
+            'nama_jabatan' => $this->request->getPost('nama_jabatan'),
+            'deskripsi_jabatan' => $this->request->getPost('deskripsi_jabatan'),
+        ];
 
-    public function delete($id) {}
+        $this->modelJabatan->save($data);
+        return redirect('jabatan');
+    }
+
+    public function delete($id)
+    {
+        $this->modelJabatan->delete($id);
+        return redirect('jabatan');
+    }
 }
