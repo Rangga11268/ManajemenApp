@@ -12,6 +12,10 @@ class JabatanController extends BaseController
 
     public function __construct()
     {
+        if (!session()->get('login')) {
+            redirect('login')->with('error', 'Silahkan login terlebih dahulu..')->send();
+            exit();
+        }
         $this->modelJabatan = new JabatanModel();
     }
     public function index()
