@@ -9,7 +9,7 @@
                  <li class="nav-item">
                      <a class="nav-link" href="./">Beranda</a>
                  </li>
-                 <li class="nav-item">
+               <li class="nav-item">
                      <a class="nav-link" href="/jabatan">Jabatan</a>
                  </li>
                  <li class="nav-item">
@@ -19,8 +19,14 @@
                     <li class="nav-item">
                       <a class="nav-link" href="/logout">Logout</a>
                     </li>
+                  <?php elseif(!session()->get('login')) : ?>
+                    <li class="nav-item">
+                      <a class="nav-link" href="login">Login</a>
+                    </li>
                  <?php endif; ?>
              </ul>
          </div>
      </div>
  </nav>
+
+

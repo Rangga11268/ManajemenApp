@@ -7,6 +7,22 @@
         <a href="/jabatan/create" class="btn btn-dark">Tambah Data</a>
     </div>
     <div class="pt-3">
+    <?php if(session()->getFlashdata('success')): ?>
+        <div class="alert alert-success d-flex align-items-center" role="alert">
+            <i class="bi bi-check-circle-fill me-2"></i>
+            <?= session()->getFlashdata('success') ?>
+        </div>      
+    <?php elseif (session()->getFlashdata('update')): ?>
+        <div class="alert alert-info d-flex align-items-center" role="alert">
+            <i class="bi bi-info-circle-fill me-2"></i>
+            <?= session()->getFlashdata('update') ?>
+        </div>
+    <?php elseif(session()->getFlashdata('delete')): ?>
+        <div class="alert alert-danger d-flex align-items-center" role="alert">
+            <i class="bi bi-trash-fill me-2"></i>
+            <?= session()->getFlashdata('delete') ?>
+        </div>
+    <?php endif; ?>
         <table class="table table-border table-striped">
             <thead>
                 <tr>

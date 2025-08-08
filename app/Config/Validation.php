@@ -38,6 +38,7 @@ class Validation extends BaseConfig
         'single' => 'CodeIgniter\Validation\Views\single',
     ];
 
+    
     // --------------------------------------------------------------------
     // Rules
     // --------------------------------------------------------------------
